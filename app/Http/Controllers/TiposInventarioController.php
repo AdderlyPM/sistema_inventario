@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-/*use App\Http\Requests\AlmacenFormRequest;*/
+use App\Http\Requests\TipoInventarioFormRequest;
 use App\TiposInventario;
 
 class TiposInventarioController extends Controller
@@ -35,7 +35,7 @@ class TiposInventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoInventarioFormRequest $request)
     {
         $tipo_inventario =  new TiposInventario();
         

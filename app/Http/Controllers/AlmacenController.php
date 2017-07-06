@@ -15,7 +15,7 @@ class AlmacenController extends Controller
      */
     public function index()
     {
-        $almacenes = \App\Almacen::get();
+        $almacenes = Almacen::get();
         return view('sysadmin/almacen.index', compact('almacenes'));
     }
 
@@ -37,8 +37,7 @@ class AlmacenController extends Controller
      */
     public function store(AlmacenFormRequest $request)
     {
-        $almacen =  new Almacen();
-        
+        $almacen =  new Almacen();        
         $almacen['descripcion'] = $request->input('descripcion');
         $almacen['slug'] = str_slug($request->input('descripcion'));
         $almacen['estado'] = $request->input('estado');

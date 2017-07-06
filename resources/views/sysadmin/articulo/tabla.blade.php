@@ -53,11 +53,11 @@
             <td>
               @if($articulo->estado == 1)
               <button class="btn btn-success" type="button">
-                Estado: <span class="badge">Si</span>
+                Activo
               </button>
               @else
               <button class="btn btn-danger" type="button">
-                Estado: <span class="badge">No</span>
+                Inactivo
               </button>
               @endif
             </td>
@@ -71,7 +71,7 @@
                       <h4 class="modal-title">Eliminar Almacén</h4>
                     </div>
                     <div class="modal-body">
-                      <p>¿Estás seguro que deseas elminar el articulo: <strong>{{$articulo->descripcion}}</strong>?</p>
+                      <p>¿Estás seguro que deseas elminar el artículo: <strong>{{$articulo->descripcion}}</strong>?</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

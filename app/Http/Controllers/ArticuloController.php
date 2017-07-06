@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticuloFormRequest;
 
 class ArticuloController extends Controller
 {
@@ -35,9 +36,18 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticuloFormRequest $request)
     {
-        //
+        $articulo = new \App\Articulo();
+        $articulo['descripcion'] = $request->input('descripcion');
+        $articulo['slug'] = str_slug($request->input('descripcion'));
+        $articulo['existencia'] = $request->input('existencia');
+        $articulo['id_tipo_inventario'] = $request->input('id_tipo_inventario');
+        $articulo['costo_unitario'] = $request->input('costo_unitario');
+        $articulo['estado'] = $request->input('estado');
+        $articulo->save();
+
+        return redirect()->back()->with('status','Artículo creado con éxtio');        
     }
 
     /**
@@ -57,9 +67,11 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $articulo = \App\Articulo::where('slug',$slug)->first();
+        $tipos_inventarios = \App\TiposInventario::get();
+        return view('sysadmin/articulo.edit', compact('articulo','tipos_inventarios'));
     }
 
     /**
@@ -71,7 +83,16 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $articulo = \App\Articulo::find($id);
+        $articulo['descripcion'] = $request->input('descripcion');
+        $articulo['slug'] = str_slug($request->input('descripcion'));
+        $articulo['existencia'] = $request->input('existencia');
+        $articulo['id_tipo_inventario'] = $request->input('id_tipo_inventario');
+        $articulo['costo_unitario'] = $request->input('costo_unitario');
+        $articulo['estado'] = $request->input('estado');
+        $articulo->update();
+
+        return redirect("/articulo"."/".str_slug($request->input('descripcion')).'/edit')->with('status', 'Actualizado con éxtio');
     }
 
     /**
@@ -80,8 +101,9 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        \App\Articulo::where('slug', $slug)->delete();
+        return redirect()->back()->with('status', 'Eliminado correctamente');
     }
 }

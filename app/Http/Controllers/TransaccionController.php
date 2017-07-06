@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TransaccionFormRequest;
 
 class TransaccionController extends Controller
 {
@@ -14,7 +15,8 @@ class TransaccionController extends Controller
     public function index()
     {
         $transacciones = \App\Transaccion::get();
-        return view('sysadmin/transaccion.index',compact('transacciones'));
+        $articulo = \App\Articulo::get();
+        return view('sysadmin/transaccion.index',compact('transacciones','articulo'));
     }
 
     /**
@@ -33,9 +35,18 @@ class TransaccionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TransaccionFormRequest $request)
     {
-        //
+        $transaccion = new \App\Transaccion();
+        $transaccion['tipo_transaccion'] = $request->input('tipo_transaccion');
+        $transaccion['id_articulo'] = $request->input('id_articulo');
+        $transaccion['fecha'] = $request->input('fecha');
+        $transaccion['cantidad'] = $request->input('cantidad');
+        $transaccion['monto'] = $request->input('monto');
+
+        $transaccion->save();
+
+        return redirect()->back()->with('status','Transacción creado con éxtio');
     }
 
     /**
@@ -57,7 +68,9 @@ class TransaccionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $transaccion = \App\Transaccion::where('id',$id)->first();
+        $articulo = \App\Articulo::get();
+        return view('sysadmin/transaccion.edit', compact('transaccion','articulo'));
     }
 
     /**
@@ -69,7 +82,16 @@ class TransaccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transaccion = \App\Transaccion::find($id);
+        $transaccion['tipo_transaccion'] = $request->input('tipo_transaccion');
+        $transaccion['id_articulo'] = $request->input('id_articulo');
+        $transaccion['fecha'] = $request->input('fecha');
+        $transaccion['cantidad'] = $request->input('cantidad');
+        $transaccion['monto'] = $request->input('monto');        
+
+        $transaccion->update();
+        return redirect("/transaccion"."/".$id.'/edit')->with('status', 'Actualizado con éxtio');
+
     }
 
     /**
@@ -80,6 +102,7 @@ class TransaccionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Transaccion::where('id', $id)->delete();
+        return redirect()->back()->with('status', 'Eliminado correctamente');
     }
 }

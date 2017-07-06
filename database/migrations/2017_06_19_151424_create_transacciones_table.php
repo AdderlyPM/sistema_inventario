@@ -16,7 +16,7 @@ class CreateTransaccionesTable extends Migration
         Schema::create('transacciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo_transaccion');
-            $table->integer('id_articulo')->unsigned()->index();;
+            $table->integer('id_articulo')->unsigned()->index();
             $table->foreign('id_articulo')->references('id')->on('articulos')->onDelete('cascade');
             $table->string('fecha');
             $table->integer('cantidad');
