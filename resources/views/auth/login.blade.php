@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="bottom_info">
-            <a href="signup.html" class="pull-left">Registrate ahora!</a>
+            <a href="/register" class="pull-left">Registrate ahora!</a>
         </div>                            
         <div class="clearfix"></div>
         <button type="submit" class="btn btn-primary btn-block ">
