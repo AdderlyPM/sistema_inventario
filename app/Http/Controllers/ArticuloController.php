@@ -15,7 +15,7 @@ class ArticuloController extends Controller
     public function index()
     {
         $articulos = \App\Articulo::get();
-        $tipos_inventarios = \App\TiposInventario::get();
+        $tipos_inventarios = \App\TiposInventario::where('estado',1)->get();
 
         return view('sysadmin/articulo.index', compact('articulos', 'tipos_inventarios'));
     }
@@ -70,7 +70,7 @@ class ArticuloController extends Controller
     public function edit($slug)
     {
         $articulo = \App\Articulo::where('slug',$slug)->first();
-        $tipos_inventarios = \App\TiposInventario::get();
+        $tipos_inventarios = \App\TiposInventario::where('estado',1)->get();
         return view('sysadmin/articulo.edit', compact('articulo','tipos_inventarios'));
     }
 

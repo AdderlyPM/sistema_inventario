@@ -18,6 +18,6 @@
 
 <div class="form-group {{ $errors->has('cuenta_contable') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('cuenta_contable', 'Cuenta Contable:', array('class' => 'control-label')) !!}
-    {!! Form::text('cuenta_contable',null,['class' => 'form-control', 'placeholder' => 'Cuenta Contable', 'required' => 'required']) !!}
+    {!! Form::number('cuenta_contable',null,['class' => 'form-control', 'placeholder' => 'Cuenta Contable', 'required' => 'required']) !!}
     {!! $errors->first('cuenta_contable', '<span class="help-block">:message</span>')!!}
 </div>

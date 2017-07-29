@@ -24,7 +24,7 @@ class ArticuloFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'descripcion' => 'required',
+            'descripcion' => 'required|unique:articulos',
             'costo_unitario' => 'required'
         ];
     }

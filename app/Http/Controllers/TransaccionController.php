@@ -15,7 +15,7 @@ class TransaccionController extends Controller
     public function index()
     {
         $transacciones = \App\Transaccion::get();
-        $articulo = \App\Articulo::get();
+        $articulo = \App\Articulo::where('estado',1)->get();
         return view('sysadmin/transaccion.index',compact('transacciones','articulo'));
     }
 
@@ -69,7 +69,7 @@ class TransaccionController extends Controller
     public function edit($id)
     {
         $transaccion = \App\Transaccion::where('id',$id)->first();
-        $articulo = \App\Articulo::get();
+        $articulo = \App\Articulo::where('estado',1)->get();
         return view('sysadmin/transaccion.edit', compact('transaccion','articulo'));
     }
 

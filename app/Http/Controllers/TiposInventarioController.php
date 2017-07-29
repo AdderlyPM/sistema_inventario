@@ -35,7 +35,7 @@ class TiposInventarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TipoInventarioFormRequest $request)
+    public function store(Request $request)
     {
         $tipo_inventario =  new TiposInventario();
         
@@ -46,7 +46,7 @@ class TiposInventarioController extends Controller
         $tipo_inventario['cuenta_contable'] = $request->input('cuenta_contable');
         $tipo_inventario->save();
 
-        return redirect()->back()->with('status','Tipo de inventario crado con éxito');
+        return redirect()->back()->with('status','Tipo de inventario creado con éxito');
     }
 
     /**
