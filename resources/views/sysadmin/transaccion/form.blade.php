@@ -19,18 +19,18 @@
 
 <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('fecha', 'Fecha:', array('class' => 'control-label')) !!}
-    {!! Form::text('fecha',null,['class' => 'form-control', 'placeholder' => 'Fecha', 'required' => 'required']) !!}
+    {!! Form::date('fecha',null,['class' => 'form-control', 'placeholder' => 'Fecha', 'required' => 'required']) !!}
     {!! $errors->first('fecha', '<span class="help-block">:message</span>')!!}
 </div>
 
 <div class="form-group {{ $errors->has('cantidad') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('cantidad', 'Cantidad:', array('class' => 'control-label')) !!}
-    {!! Form::number('cantidad',null,['class' => 'form-control', 'placeholder' => 'Cantidad', 'required' => 'required']) !!}
+    {!! Form::number('cantidad',null,['class' => 'form-control', 'placeholder' => 'Cantidad', 'required' => 'required', 'min' => 0]) !!}
     {!! $errors->first('cantidad', '<span class="help-block">:message</span>')!!}
 </div>
 
 <div class="form-group {{ $errors->has('monto') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('monto', 'Monto:', array('class' => 'control-label')) !!}
-    {!! Form::number('monto',null,['class' => 'form-control', 'placeholder' => 'Monto', 'required' => 'required']) !!}
+    {!! Form::number('monto',null,['class' => 'form-control', 'placeholder' => 'Monto', 'required' => 'required', 'min' => 0]) !!}
     {!! $errors->first('monto', '<span class="help-block">:message</span>')!!}
 </div>

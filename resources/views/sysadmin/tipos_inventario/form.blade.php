@@ -2,7 +2,11 @@
     <div class="toggle-switch">
         <label class="control-label">Estado:</label>
         <input id='toggle-switch1aHidden'  type='hidden' value='0' name='estado'>
+        @if(isset($tipo_inventario))
+        {!! Form::checkbox('estado', 1, null, ['id' => 'toggle-switch1a']) !!}
+        @else
         {!! Form::checkbox('estado', 1, true, ['id' => 'toggle-switch1a']) !!}
+        @endif
         <div class="toggle">
             <label for="toggle-switch1a"><i></i>
             </label>
@@ -18,6 +22,6 @@
 
 <div class="form-group {{ $errors->has('cuenta_contable') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('cuenta_contable', 'Cuenta Contable:', array('class' => 'control-label')) !!}
-    {!! Form::number('cuenta_contable',null,['class' => 'form-control', 'placeholder' => 'Cuenta Contable', 'required' => 'required']) !!}
+    {!! Form::number('cuenta_contable',null,['class' => 'form-control', 'placeholder' => 'Cuenta Contable', 'required' => 'required', 'min' => 0]) !!}
     {!! $errors->first('cuenta_contable', '<span class="help-block">:message</span>')!!}
 </div>

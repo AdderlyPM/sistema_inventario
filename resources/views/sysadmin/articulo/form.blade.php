@@ -2,7 +2,11 @@
     <div class="toggle-switch">
         <label class="control-label">Estado:</label>
         <input id='toggle-switch1aHidden'  type='hidden' value='0' name='estado'>
-        {!! Form::checkbox('estado', 1, true, ['id' => 'toggle-switch1a5']) !!}
+        @if(isset($articulo))
+            {!! Form::checkbox('estado', 1, null, ['id' => 'toggle-switch1a5']) !!}
+        @else
+            {!! Form::checkbox('estado', 1, true, ['id' => 'toggle-switch1a5']) !!}
+        @endif
         <div class="toggle">
             <label for="toggle-switch1a5"><i></i>
             </label>
@@ -17,7 +21,7 @@
 </div>
 <div class="form-group {{ $errors->has('existencia') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('existencia', 'Existencia:', array('class' => 'control-label')) !!}
-    {!! Form::number('existencia',null,['class' => 'form-control', 'placeholder' => 'Existencia', 'required' => 'required']) !!}
+    {!! Form::number('existencia',null,['class' => 'form-control', 'placeholder' => 'Existencia', 'required' => 'required', 'min' => 0]) !!}
     {!! $errors->first('existencia', '<span class="help-block">:message</span>')!!}
 </div>
 
@@ -32,6 +36,6 @@
 
 <div class="form-group {{ $errors->has('costo_unitario') ? 'has-error' : ''}} col-md-12">
     {!! Form::label('costo_unitario', 'Costo Unitario:', array('class' => 'control-label')) !!}
-    {!! Form::number('costo_unitario',null,['class' => 'form-control', 'placeholder' => 'Costo Unitario', 'required' => 'required']) !!}
+    {!! Form::number('costo_unitario',null,['class' => 'form-control', 'placeholder' => 'Costo Unitario', 'required' => 'required', 'min' => 0]) !!}
     {!! $errors->first('costo_unitario', '<span class="help-block">:message</span>')!!}
 </div>
