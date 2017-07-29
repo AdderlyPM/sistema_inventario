@@ -2,7 +2,7 @@
     <div class="toggle-switch">
         <label class="control-label">Estado:</label>
         <input id='toggle-switch1aHidden'  type='hidden' value='0' name='estado'>
-        {!! Form::checkbox('estado', 1, null, ['id' => 'toggle-switch1a']) !!}
+        {!! Form::checkbox('estado', 1, true, ['id' => 'toggle-switch1a']) !!}
         <div class="toggle">
             <label for="toggle-switch1a"><i></i>
             </label>
