@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'azure'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +52,15 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+        ],
+
+        'azure' => [
+            'driver' => 'sqlsrv',
+            'host' => 'tcp:integracion-op.database.windows.net,1433',
+            'database' => 'sistema_inventarios',
+            'username' => 'Integracion',
+            'password' => 'Perritoverde01',
+            'prefix' => '',
         ],
 
         'pgsql' => [

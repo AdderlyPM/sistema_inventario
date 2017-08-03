@@ -19,17 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/asiento-contable', 'AsientoController', [
-	'names' => [
-		'edit' => 'asiento_edit_path',
-		'create' => 'asiento_create_path',
-		'store' => 'asiento_store_path',
-		'update' => 'asiento_update_path',
-	]
-]);
-
-
-
 Route::resource('/almacen', 'AlmacenController', [
 	'names' => [
 		'edit' => 'almacen_edit_path',
