@@ -66,6 +66,10 @@
                         <i class="ti-home"></i>
                         <span class="text ">Transacción</span>
                     </a>
+                    <a href="/asiento-contable" class="waves-effect waves-light">
+                        <i class="ti-home"></i>
+                        <span class="text ">Asiento Contable</span>
+                    </a>
                 </li> 
             </ul>
         </div>
